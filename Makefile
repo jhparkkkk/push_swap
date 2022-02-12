@@ -15,6 +15,7 @@ LIBFT		=	./libft/libft.a
 SRCS		=	push_swap.c \
 				parsing.c \
 				index.c \
+				moves.c \
 				utils.c \
 
 OBJS		= 	$(SRCS:.c=.o)

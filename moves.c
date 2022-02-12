@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/07 21:22:39 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/12 12:41:09 by jeepark          ###   ########.fr       */
+/*   Created: 2022/02/12 12:18:53 by jeepark           #+#    #+#             */
+/*   Updated: 2022/02/12 13:02:35 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void    ft_swap(*box)
 {
-	del(lst->content);
-	free(lst);
-}
-
-void	ft_lstdelone_int(t_list_int *lst, void (*del)(int))
-{
-	del(lst->content);
-	free(lst);
+    
 }

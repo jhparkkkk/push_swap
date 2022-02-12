@@ -52,6 +52,7 @@ int *ft_index_values(int ac, char **av)
 	i = 0;
     index_tab = ft_index_tab_init(ac, av);
 	index_tab = ft_sort_int_tab(index_tab, ac);
+	// reste a trouver comment indexer mes valeurs dans l'ordre original 
 	while(index_tab[i])
 	{
 		index_tab[i] = i;
