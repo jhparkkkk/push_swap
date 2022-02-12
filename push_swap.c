@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/12 12:07:58 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/12 15:01:51 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 t_list_int  *ft_list_init(t_toolbox *box, char **av)
 {
     int i;
-    i = 0;
+    i = 1;
     box->list_a = NULL;
     while(av[i])
         ft_lstadd_back_int(&box->list_a, ft_lstnew_int(ft_atol(av[i++])));
@@ -29,6 +29,7 @@ t_toolbox   ft_toolbox_init(t_toolbox *box, int ac, char **av)
     box->index = ft_index_values(ac, av);
     box->list_a = ft_list_init(box, av);
     box->list_b = NULL;
+    //box->list_a_len = ft_lstlen(box);
     return(*box);
 }
 
@@ -43,7 +44,10 @@ int main(int ac, char **av)
     if (ft_check_error(av, ac) == 1)
 		return (write(2, "Error\n", 6), 1);
     ft_toolbox_init(&box, ac, av);            // j'initialise tous mes outils
-	print_list(box.list_a);
+    printf("%s\n", "here's my list");
+    print_list(box.list_a);
+    ft_lstlen(&box);
+    //printf("%d", box.list_a_len);
     /*tab = ft_index_values(av, ac);
     i = 0;
     while(tab[i])
