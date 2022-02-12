@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:18:53 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/12 15:09:16 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/12 15:45:12 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,14 @@ int ft_lstlen(t_toolbox *box)
 
 void    ft_swap_a(t_toolbox *box)
 {
-    if (ft_lstlen(box->list_a) > 1)
+    t_list_int *tmp;
+
+    tmp = NULL;
+    if (ft_lstlen(box) > 1)
     {
-        
+        tmp = box->list_a;
+        box->list_a = box->list_a->next; 
+        box->list_a->next = tmp; 
     }
+    free(tmp);
 }

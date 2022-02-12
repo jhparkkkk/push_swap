@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/12 15:01:51 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/12 15:47:18 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int main(int ac, char **av)
 {
     
     t_toolbox box;                            //t_list_int  *list;
+     //t_toolbox box2;
     
     if (ac <= 1)                              //je check d'abord les erreurs 
         return(0);
@@ -46,7 +47,7 @@ int main(int ac, char **av)
     ft_toolbox_init(&box, ac, av);            // j'initialise tous mes outils
     printf("%s\n", "here's my list");
     print_list(box.list_a);
-    ft_lstlen(&box);
+    //t_lstlen(&box);
     //printf("%d", box.list_a_len);
     /*tab = ft_index_values(av, ac);
     i = 0;
