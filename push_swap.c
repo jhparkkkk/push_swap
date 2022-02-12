@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/12 15:47:18 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/12 17:34:54 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ t_toolbox   ft_toolbox_init(t_toolbox *box, int ac, char **av)
     box->index = ft_index_values(ac, av);
     box->list_a = ft_list_init(box, av);
     box->list_b = NULL;
-    //box->list_a_len = ft_lstlen(box);
     return(*box);
 }
 
@@ -47,6 +46,9 @@ int main(int ac, char **av)
     ft_toolbox_init(&box, ac, av);            // j'initialise tous mes outils
     printf("%s\n", "here's my list");
     print_list(box.list_a);
+    ft_swap_a(&box);
+    printf("did my 1st swap succeed?\n");
+    //print_list(box.list_a);
     //t_lstlen(&box);
     //printf("%d", box.list_a_len);
     /*tab = ft_index_values(av, ac);

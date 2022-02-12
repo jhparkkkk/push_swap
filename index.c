@@ -9,7 +9,7 @@ static int  *ft_index_tab_init(int ac, char **av)
 	
 	i = 1;
 	j = 0;
-	index_tab = ft_calloc((ac), 8);
+	index_tab = ft_calloc((ac), 4);
 	while(av[i])
 	{
 		index_tab[j] = ft_atol(av[i]);
