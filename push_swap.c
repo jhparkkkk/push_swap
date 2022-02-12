@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/12 17:34:54 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/12 19:23:10 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ t_toolbox   ft_toolbox_init(t_toolbox *box, int ac, char **av)
 int main(int ac, char **av)
 {
     
-    t_toolbox box;                            //t_list_int  *list;
-     //t_toolbox box2;
+    t_toolbox box;                            
     
     if (ac <= 1)                              //je check d'abord les erreurs 
         return(0);
