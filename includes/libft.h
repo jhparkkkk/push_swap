@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 19:52:42 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/12 14:39:09 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/13 16:40:06 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list_int	*ft_lstnew_int(int content);
 t_list_int	*ft_lstlast_int(t_list_int *lst);
 void		ft_lstadd_back_int(t_list_int **alst, t_list_int *new);
-void		ft_lstdelone_int(t_list_int *lst, void (*del)(void*));
-void		ft_lstclear_int(t_list_int **lst, void (*del)(void*));
+void		ft_lstdelone_int(t_list_int *lst, void (*del)(int));
+void		ft_lstclear_int(t_list_int **lst, void (*del)(int));
 void 		lstprint(t_list_int *list);
 void		ft_lstadd_front_int(t_list_int **alst, t_list_int *new);
 #endif

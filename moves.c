@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:18:53 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/12 20:06:47 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/13 19:52:07 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
 
 int ft_lstlen(t_toolbox *box)
 {
@@ -29,37 +30,61 @@ int ft_lstlen(t_toolbox *box)
     return i;  
 }
 
-void    ft_swap_a(t_toolbox *box)
+void    ft_swap(t_toolbox *box)
 {
     t_list_int *tmp;
-    int i;
-
-    i = 0;
-
-    tmp = NULL;
     
+    tmp = NULL;
     if (ft_lstlen(box) > 1)
     {
-        tmp = box->list_a;    
-        printf("TMP: %d\n", tmp->content);   
-        printf("34 YOU HERE ?: %d\n", box->list_a->content);
+        tmp = box->list_a;
         box->list_a = box->list_a->next;
-        tmp->next = tmp;
-        printf("WHERETF AM I ?: %d\n", box->list_a->content);
-        //printf("AND HOW ABOUT NOW ?: %d\n", box->list_a->content);
-        //box->list_a = box->list_a->next;
-        
-        //box->list_a = box->list_a->next;
-        //printf("1s POS: %d\n", box->list_a->content);
-        
-        printf("SWAP\n");
-        //print_list(box->list_a);
-        //printf("1s POS after swap: %d\n", box->list_a->content);
-        //box->list_a = box->list_a->next;
-        //box->list_a = tmp;
-        //printf("1s POS after swap: %d\n", box->list_a->content);
-        //printf("2nd POS: %d\n", box->list_a->content);
-        //box->list_a->next = tmp;
+        tmp->next = box->list_a->next; 
+        box->list_a->next = tmp;
     }
+    return ;
+}
+
+void    ft_push(t_toolbox *box)
+{
+    t_list_int *tmp;
+    
+    if (box->list_a == NULL)
+        return ;
+    ft_lstadd_front_int(&box->list_b, ft_lstnew_int(box->list_a->content));
+    tmp = box->list_a;
+    box->list_a = box->list_a->next;
     free(tmp);
+}
+
+void    ft_rotate(t_toolbox *box)
+{
+    t_list_int *tmp;
+
+    if (box->list_a->next == NULL)
+        return ;
+    ft_lstadd_back_int(&box->list_a, ft_lstnew_int(box->list_a->content));
+    tmp = box->list_a;
+    box->list_a = box->list_a->next;
+    free(tmp);
+}
+
+void    ft_reverse_rotate(t_toolbox *box)
+{
+    t_list_int *tmp;
+    t_list_int *bin;
+
+    tmp = NULL;
+    bin = NULL;
+    if (box->list_a->next == NULL)
+        return ;
+    tmp = box->list_a;
+    bin = box->list_a;
+    while(tmp->next != NULL)
+        tmp = tmp->next;
+    ft_lstadd_front_int(&box->list_a, ft_lstnew_int(tmp->content));
+    while(bin->next != NULL && bin->next->content != tmp->content)
+        bin = bin->next;
+    free(bin->next);
+    bin->next = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/12 19:23:10 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/13 17:10:31 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,31 @@ int main(int ac, char **av)
     ft_toolbox_init(&box, ac, av);            // j'initialise tous mes outils
     printf("%s\n", "here's my list");
     print_list(box.list_a);
-    ft_swap_a(&box);
-    printf("did my 1st swap succeed?\n");
-    //print_list(box.list_a);
-    //t_lstlen(&box);
-    //printf("%d", box.list_a_len);
-    /*tab = ft_index_values(av, ac);
-    i = 0;
-    while(tab[i])
-    {
-        printf("index: %d\n", tab[i]);
-        i++;
-    }*/
+    ft_swap(&box);
+    print_list(box.list_a);
+    printf("LIST A BEFORE PUSH\n");
+    print_list(box.list_a);
+    //printf("LIST B\n");
+    //print_list(box.list_b);
+    ft_push(&box);
+    printf("LIST A AFTER PUSH\n");
+    print_list(box.list_a);
+    // Pourquoi list_a == tempo ? 
+    printf("LIST B\n");
+    print_list(box.list_b);
+    
+    printf("ROTATE PLEASE\n");
+    ft_rotate(&box);
+    printf("LIST A\n");
+    print_list(box.list_a);
+    printf("LIST B\n");
+    print_list(box.list_b);
+
+    printf("********REVERSE ROTATE PLEASE********\n");
+    ft_reverse_rotate(&box);
+    printf("LIST A\n");
+    print_list(box.list_a);
+    printf("LIST B\n");
+    print_list(box.list_b);
     return(0);
 }
