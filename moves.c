@@ -6,36 +6,19 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:18:53 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/13 19:52:07 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/14 12:04:16 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-int ft_lstlen(t_toolbox *box)
-{
-    t_list_int *tmp;
-    int i;
-    
-    tmp = NULL;
-    i = 0;
-    tmp = box->list_a;
-    while (tmp->next != NULL)
-    {   
-        tmp = tmp->next;
-        i++;
-    }
-    i++;
-    return i;  
-}
-
 void    ft_swap(t_toolbox *box)
 {
     t_list_int *tmp;
     
     tmp = NULL;
-    if (ft_lstlen(box) > 1)
+    if (box->list_a != NULL || box->list_a->next != NULL)
     {
         tmp = box->list_a;
         box->list_a = box->list_a->next;

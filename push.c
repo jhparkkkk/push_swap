@@ -1,47 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 13:43:22 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/14 15:40:49 by jeepark          ###   ########.fr       */
+/*   Created: 2022/02/14 15:15:38 by jeepark           #+#    #+#             */
+/*   Updated: 2022/02/14 15:20:59 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int ft_lstlen(t_toolbox *box)
+void    ft_push_a(t_toolbox *box)
 {
     t_list_int *tmp;
-    int i;
     
-    tmp = NULL;
-    i = 0;
-    tmp = box->list_a;
-    while (tmp->next != NULL)
-    {   
-        tmp = tmp->next;
-        i++;
-    }
-    i++;
-    return i;  
+    if (box->list_b == NULL)
+        return ;
+    ft_lstadd_front_int(&box->list_a, ft_lstnew_int(box->list_b->content));
+    tmp = box->list_b;
+    box->list_b = box->list_b->next;
+    free(tmp);
 }
 
-void print_list(t_list_int *list)
+void    ft_push_b(t_toolbox *box)
 {
-    t_list_int  *tmp = list;
-    if (!list)
-    {    
-        printf("--EMPTY--\n");
+    t_list_int *tmp;
+    
+    if (box->list_a == NULL)
         return ;
-    }
-   	while (tmp->next != NULL)
-    {
-        printf("%d\n", tmp->content);
-        tmp = tmp->next;
-    }
-    printf("%d\n", tmp->content);
+    ft_lstadd_front_int(&box->list_b, ft_lstnew_int(box->list_a->content));
+    tmp = box->list_a;
+    box->list_a = box->list_a->next;
+    free(tmp);
 }

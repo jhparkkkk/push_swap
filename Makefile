@@ -16,6 +16,10 @@ SRCS		=	push_swap.c \
 				parsing.c \
 				index.c \
 				moves.c \
+				swap.c \
+				push.c \
+				rotate.c \
+				reverse_rotate.c \
 				utils.c \
 
 OBJS		= 	$(SRCS:.c=.o)
