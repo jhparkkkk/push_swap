@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/14 22:56:44 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/15 22:23:57 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,10 @@ int main(int ac, char **av)
     }
     ft_toolbox_init(&box, ac, av);            // j'initialise tous mes outils
     printf("here's my indexed list\n");
+    while(box.index[i])
+    {
+        printf("%d\n", box.index[i++]);
+    }
 	printf("%s\n", "here's my list");
     print_list(box.list_a);
 
