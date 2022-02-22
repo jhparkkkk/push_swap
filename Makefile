@@ -15,11 +15,15 @@ LIBFT		=	./libft/libft.a
 SRCS		=	push_swap.c \
 				parsing.c \
 				index.c \
-				moves.c \
+				little_sort.c \
 				swap.c \
 				push.c \
 				rotate.c \
 				reverse_rotate.c \
+				longest_list.c \
+				flight.c \
+				target.c \
+				mission.c \
 				utils.c \
 
 OBJS		= 	$(SRCS:.c=.o)

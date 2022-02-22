@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 15:24:23 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/14 20:59:38 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/19 14:52:36 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void    ft_reverse_rotate_a(t_toolbox *box)
 
     tmp = NULL;
     bin = NULL;
-    if (box->list_a->next == NULL)
-        return ;
+    //if (box->list_a->next == NULL)
+     //   return ;
     tmp = box->list_a;
     bin = box->list_a;
     while(tmp->next != NULL)
@@ -31,6 +31,7 @@ void    ft_reverse_rotate_a(t_toolbox *box)
         bin = bin->next;
     free(bin->next);
     bin->next = NULL;
+    write(1, "rra\n", 4);
 }
 
 void    ft_reverse_rotate_b(t_toolbox *box)
@@ -51,6 +52,7 @@ void    ft_reverse_rotate_b(t_toolbox *box)
         bin = bin->next;
     free(bin->next);
     bin->next = NULL;
+    write(1, "rrb\n", 4);
 }
 
 void    ft_reverse_rotate_rr(t_toolbox *box)

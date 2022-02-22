@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 15:15:38 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/14 15:20:59 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/18 17:16:13 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void    ft_push_a(t_toolbox *box)
     tmp = box->list_b;
     box->list_b = box->list_b->next;
     free(tmp);
+    write(1, "pa\n", 3);
 }
 
 void    ft_push_b(t_toolbox *box)
@@ -35,4 +36,5 @@ void    ft_push_b(t_toolbox *box)
     tmp = box->list_a;
     box->list_a = box->list_a->next;
     free(tmp);
+    write(1, "pb\n", 3);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 15:21:12 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/14 20:57:12 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/18 17:14:17 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void    ft_rotate_a(t_toolbox *box)
     tmp = box->list_a;
     box->list_a = box->list_a->next;
     free(tmp);
+    write(1, "ra\n", 3);
 }
 
 void    ft_rotate_b(t_toolbox *box)
@@ -35,6 +36,7 @@ void    ft_rotate_b(t_toolbox *box)
     tmp = box->list_b;
     box->list_b = box->list_b->next;
     free(tmp);
+    write(1, "rb\n", 3);
 }
 
 void    ft_rotate_rr(t_toolbox *box)

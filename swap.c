@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:01:20 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/14 15:15:19 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/18 17:15:31 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    ft_swap_a(t_toolbox *box)
         tmp->next = box->list_a->next; 
         box->list_a->next = tmp;
     }
-    return ;
+    write(1, "sa\n", 3);
 }
 
 void    ft_swap_b(t_toolbox *box)
@@ -45,6 +45,7 @@ void    ft_swap_b(t_toolbox *box)
         box->list_b->next = tmp;
     }
     return ;
+    write(1, "sb", 3);
 }
 
 void    ft_swap_ss(t_toolbox *box)

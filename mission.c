@@ -1,24 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   mission.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 22:36:30 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/20 13:05:27 by jeepark          ###   ########.fr       */
+/*   Created: 2022/02/22 11:40:52 by jeepark           #+#    #+#             */
+/*   Updated: 2022/02/22 11:41:05 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "push_swap.h"
 
-void	*ft_calloc(size_t count, size_t size)
-{
-	void *ptr;
-
-	ptr = malloc(count * size);
-	if (ptr == NULL)
-		return (ptr);
-	ft_bzero(ptr, size * count);
-	return (ptr);
-}
