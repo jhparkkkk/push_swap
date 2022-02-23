@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/22 11:51:12 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/24 00:07:18 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_toolbox   ft_toolbox_init(t_toolbox *box, int ac, char **av)
 	box->lis = ft_lis_keeper(box);
     box->list_a = ft_list_init_tab(box);
     box->list_b = NULL;
+	box->lim_max = ft_find_max(box);
     return(*box);
 }
 
@@ -40,10 +41,9 @@ t_toolbox   ft_toolbox_init(t_toolbox *box, int ac, char **av)
 int main(int ac, char **av)
 {
     
-    t_toolbox box;                          
-	int i;
-	i = 0;
-	int target;
+    t_toolbox box;
+	t_moves menu;                      
+	int roulette;
     if (ac <= 1)                              
         return(0);   
     if (ft_check_error(av, ac) == 1)
@@ -53,27 +53,21 @@ int main(int ac, char **av)
         write(1, av[1], ft_strlen(av[1]));
         return(0);
     }
-    ft_toolbox_init(&box, ac, av);
-	print_list(box.list_a);
-	while( i < box.max)
-	{
-		printf("LIS[%d] = %d\n", i, box.lis[i]);
-		i++;
-	}
-	if (ac > 6)
-		boarding_gate(&box);
-	printf("\n------- LIST A -------\n");
-	print_list(box.list_a);
-	printf("\n------- LIST B -------\n");
-	print_list(box.list_b);
-	
-	target = find_target(&box);
-	printf("TARGET IS LOCATED AT = %d\n", target);
-	printf("BOX COUNT = %d\n", box.count);
-	printf("BOX MAX = %d\n", box.max);
-    if (ac == 4)
+	ft_toolbox_init(&box, ac, av);
+	if (ac <= 4)
         ft_sort_three(&box);
-    if (ac == 6)
-        ft_sort_five(&box);
+	if (ac > 5)
+		boarding_gate(&box);
+	roulette = box.count;
+	while(roulette >= 0)
+	{
+		simulation(&box, &menu);
+		execution(&box, &menu);
+		roulette--;
+	}
+	if (box.list_a->content != 0)
+		fasten_your_seatbelt(&box);
+	print_list(box.list_a);
+	print_list(box.list_b);
     return(0);
 }

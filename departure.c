@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Flight.c                                           :+:      :+:    :+:   */
+/*   departure.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:42:53 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/22 11:26:19 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/23 20:21:44 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_toolbox boarding_gate(t_toolbox *box)
     int scanning;
     passenger = 0;
     scanning = box->count;
-    while(passenger < scanning)
+    while(passenger <= scanning)
     {
         if(control_visa(box) == 0)
             ft_rotate_a(box);

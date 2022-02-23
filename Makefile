@@ -21,9 +21,10 @@ SRCS		=	push_swap.c \
 				rotate.c \
 				reverse_rotate.c \
 				longest_list.c \
-				flight.c \
+				departure.c \
 				target.c \
 				mission.c \
+				arrival.c \
 				utils.c \
 
 OBJS		= 	$(SRCS:.c=.o)

@@ -3,83 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:06:11 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/12 16:43:10 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/23 14:04:51 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-static int ft_is_numeric(char *av)
+static int ft_is_numeric(char **av)
 {
     int i;
 	int j;
-    i = 0;
+    i = 1;
     while (av[i])
     {
-        if (ft_isdigit(av[i]) == 0 && av[i] != ' ' && av[i] != '-')
-            return (1);
-        if (av[i] == '-')
-		{
-			j = i + 1;
-			while(av[j])
+		j = 0;
+		while(av[i][j])
+        {
+			if (ft_isdigit(av[i][j]) == 0 && av[i][j] != ' ' && av[i][j] != '-')
+            	return (1);
+        	if (av[i][j] == '-')
 			{
-				if (ft_isdigit(av[j]) == 0) 
-            		return(1);
-				j++;
+				if (ft_isdigit(av[i][j + 1]) == 0)
+					return(1);
 			}
+			j++;
 		}
-        i++;
+		i++;
     }
     return (0);
 }
 
-
-static int ft_is_right_nb(char **av, int ac)
+static int ft_is_duplicate(char **av, int ac)
 {
-	int i;
-	int j;
-	int *box;
-	
+	int		i;
+	int		j;
+
 	i = 1;
-	j = 0;
-	box = ft_calloc((ac - 1), 4);
-	while(av[i])
+	while(i < ac)
 	{
-		box[j] = ft_atol(av[i]);
-		i++;
-		j++;
-	}
-	j = 0;
-	i = 1;
-	while(box[j] && i <= ac)
-	{	
-		if (box[j] == box[i])
+		j = i + 1;
+		while (j < ac)
 		{
-			free(box);
-			return(1);
+			if (ft_strcmp(av[i], av[j]) == 0)
+				return(1);
+			j++;
 		}
 		i++;
 	}
-	free(box);
-	return(0);
+	return (0);
 }
 
 int   ft_check_error(char **av, int ac)
 {   
-	int	i;
-
-	i = 1;
-	while (av[i])
-	{
-		if (av[i][0] == '\0')
-			return(1);
-		if (ft_is_numeric(av[i]) == 1 || ft_is_right_nb(&av[i], ac) == 1)
-			return (1);
-		i++;
-	}
+	if (av[1][0] == '\0')
+		return(1);
+	if (ft_is_numeric(av) == 1)
+		return(1);
+	if (ft_is_duplicate(av, ac) == 1)
+		return (1);
 	return (0);
 }

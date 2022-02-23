@@ -6,16 +6,18 @@
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:45:49 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/22 11:50:53 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/23 19:47:01 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
  #define PUSH_SWAP_H
 #include "libft.h"
+
 typedef struct s_toolbox
 {
     int         count;
+    int         lim_max;
     int         max;
     int         max_pos;
     int         *values;
@@ -25,23 +27,22 @@ typedef struct s_toolbox
     t_list_int  *list_b;
 }               t_toolbox;
 
-/*typedef struct s_moves              // A voir avec
+typedef  struct s_moves
 {
-    char    *key;
-    void    (*value)(t_toolbox *);
-}           t_moves; 
-
-void    ft_swap_a(t_toolbox *box);
-void    ft_swap_b(t_toolbox *box);
-void    ft_swap_ss(t_toolbox *box);
-
-static t_moves const moves[] = 
-{
-    {"sa", ft_swap_a},
-    {"sb", ft_swap_b},
-    {"ss", ft_swap_ss},
-    {0}
-};*/
+    int ra;
+    int rb;
+    int rra;
+    int rrb;
+    int ra_opti;
+    int rb_opti;
+    int rra_opti;
+    int rrb_opti;
+    int rr;
+    int rrr;
+    int *price;
+    int execution;
+}
+        t_moves;
 
 /************PARSING*************/
 int         ft_check_error(char **av, int ac);
@@ -78,7 +79,7 @@ void    ft_reverse_rotate_b(t_toolbox *box);
 void    ft_reverse_rotate_rr(t_toolbox *box);
 
 /*********SORTING LITTLE LISTS***********/
-t_toolbox    ft_sort_three(t_toolbox *box);
+t_toolbox   ft_sort_three(t_toolbox *box);
 t_toolbox   ft_sort_five(t_toolbox *box);
 
 /***************SORTING*****************/
@@ -92,4 +93,8 @@ int control_visa(t_toolbox *box);
 
 /************SIMULATION*****************/
 int find_target(t_toolbox *box);
+void simulation(t_toolbox *box, t_moves *menu);
+void execution(t_toolbox *box, t_moves *menu);
+
+void fasten_your_seatbelt(t_toolbox *box);
 #endif

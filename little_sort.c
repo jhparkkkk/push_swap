@@ -1,6 +1,16 @@
 #include "libft.h"
 #include "push_swap.h"
 
+static t_toolbox ft_sort_two(t_toolbox *box)
+{
+    if (box->list_a->content > box->list_a->next->content)
+    {
+        ft_swap_a(box);
+        exit(1);
+    }
+    exit(1);
+}
+
 t_toolbox    ft_sort_three(t_toolbox *box)
 {
     t_list_int *tmp;
@@ -9,6 +19,8 @@ t_toolbox    ft_sort_three(t_toolbox *box)
 	t_list_int  *last;
 	int i;
 
+    if(box->count == 2)
+        ft_sort_two(box);
     i = 0;
 	tmp = box->list_a;
 	last = ft_lstlast_int(tmp);

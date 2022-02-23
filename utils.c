@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:43:22 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/18 15:04:44 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/23 20:21:51 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void print_list(t_list_int *list)
     t_list_int  *tmp = list;
     if (!list)
     {    
-        printf("--EMPTY--\n");
         return ;
     }
    	while (tmp->next != NULL)
@@ -71,6 +70,8 @@ int		ft_find_max(t_toolbox *box)
     int i;
     t_list_int *tmp;
     i = 0;
+    if (!box->list_a)
+        return (0);
     tmp = box->list_a;
     max = tmp->content;
 	while (tmp->next)
