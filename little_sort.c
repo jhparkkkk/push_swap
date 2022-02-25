@@ -29,6 +29,8 @@ t_toolbox    ft_sort_three(t_toolbox *box)
 	while(box->list_a->next->next->content != max)
 	{
 		ft_reverse_rotate_a(box);
+        write(1, "rra\n", 4);
+        compteur++;
 	}
 	if(box->list_a->next->content == min)
 	{
@@ -54,6 +56,8 @@ t_toolbox   ft_sort_five(t_toolbox *box)
     while(i > 0)
     {
         ft_rotate_a(box);
+        write(1, "ra\n", 3);
+        compteur++;
         i--;
     }
     ft_push_b(box);
@@ -66,6 +70,8 @@ t_toolbox   ft_sort_five(t_toolbox *box)
     while(i > 0)
     {
         ft_rotate_a(box);
+        write(1, "ra\n", 3);
+        compteur++;
         i--;
     }
     ft_push_b(box);

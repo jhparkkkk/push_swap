@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:01:20 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/18 17:15:31 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/25 18:55:54 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void    ft_swap_a(t_toolbox *box)
         box->list_a->next = tmp;
     }
     write(1, "sa\n", 3);
+    compteur++;
 }
 
 void    ft_swap_b(t_toolbox *box)

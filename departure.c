@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:42:53 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/23 20:21:44 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/25 18:52:31 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ t_toolbox boarding_gate(t_toolbox *box)
     while(passenger <= scanning)
     {
         if(control_visa(box) == 0)
+        {
             ft_rotate_a(box);
+            write(1, "ra\n", 3);
+            compteur++;
+        }
         else
         {
             ft_push_b(box);

@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/24 00:07:18 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/25 19:13:11 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ t_toolbox   ft_toolbox_init(t_toolbox *box, int ac, char **av)
 int main(int ac, char **av)
 {
     
-    t_toolbox box;
-	t_moves menu;                      
+    t_toolbox box;                  
 	int roulette;
+    compteur = 0;
     if (ac <= 1)                              
         return(0);   
     if (ft_check_error(av, ac) == 1)
@@ -54,20 +54,19 @@ int main(int ac, char **av)
         return(0);
     }
 	ft_toolbox_init(&box, ac, av);
+    if (ac > 5)
+		boarding_gate(&box);
 	if (ac <= 4)
         ft_sort_three(&box);
-	if (ac > 5)
-		boarding_gate(&box);
+	
 	roulette = box.count;
-	while(roulette >= 0)
+	while(roulette >= 0)        // ca cest pour vider B
 	{
-		simulation(&box, &menu);
-		execution(&box, &menu);
+		meta_simulation(&box);
 		roulette--;
 	}
 	if (box.list_a->content != 0)
 		fasten_your_seatbelt(&box);
-	print_list(box.list_a);
-	print_list(box.list_b);
+    //printf("COMPTEUR = %d\n", compteur);
     return(0);
 }

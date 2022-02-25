@@ -6,13 +6,15 @@
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:45:49 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/23 19:47:01 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/25 18:42:02 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
  #define PUSH_SWAP_H
 #include "libft.h"
+
+int compteur;
 
 typedef struct s_toolbox
 {
@@ -29,18 +31,19 @@ typedef struct s_toolbox
 
 typedef  struct s_moves
 {
-    int ra;
-    int rb;
-    int rra;
-    int rrb;
-    int ra_opti;
-    int rb_opti;
-    int rra_opti;
-    int rrb_opti;
-    int rr;
-    int rrr;
-    int *price;
-    int execution;
+    int         rb;
+    int         ra;
+    int         rra;
+    int         rrb;
+    int         ra_opti;
+    int         rb_opti;
+    int         rra_opti;
+    int         rrb_opti;
+    int         rr;
+    int         rrr;
+    int         price;
+    int         cost;
+    int         execution;
 }
         t_moves;
 
@@ -92,8 +95,11 @@ t_toolbox boarding_gate(t_toolbox *box);
 int control_visa(t_toolbox *box);
 
 /************SIMULATION*****************/
-int find_target(t_toolbox *box);
-void simulation(t_toolbox *box, t_moves *menu);
+
+
+void meta_simulation(t_toolbox *box);
+int find_target(t_toolbox *box, t_moves *menu);
+void simulation(t_moves *menu);
 void execution(t_toolbox *box, t_moves *menu);
 
 void fasten_your_seatbelt(t_toolbox *box);
