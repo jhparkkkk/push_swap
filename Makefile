@@ -8,13 +8,14 @@ INC			=	-I includes -I libft
 
 CFLAGS		=	-Wall -Wextra -Werror -g
 
-LFLAGS		=	-lft -L ./libft/
+LFLAGS		=	-I./libft -lft -L./libft
+#OPTIONS		= -I$(INC_DIR) -I./libft -lft -L./libft
 
 LIBFT		=	./libft/libft.a
 
 SRCS		=	push_swap.c \
-				parsing.c \
-				index.c \
+				check_error.c \
+				init.c \
 				little_sort.c \
 				swap.c \
 				push.c \
@@ -23,7 +24,9 @@ SRCS		=	push_swap.c \
 				longest_list.c \
 				departure.c \
 				target.c \
-				mission.c \
+				simulation.c \
+				moves.c \
+				sync.c \
 				arrival.c \
 				utils.c \
 
@@ -38,7 +41,7 @@ $(LIBFT):
 			$(MAKE) -C $(@D) $(@F)
 
 $(NAME):	$(OBJS) $(LIBFT)
-			$(CC) $(OBJS) $(LFLAGS) -g3 -fsanitize=address $(OUTPUT_OPTION)  
+			$(CC) $(OBJS) $(LFLAGS) -g3 -fsanitize=address  $(OUTPUT_OPTION)  
 
 clean:
 			$(RM) $(NAME) $(OBJS)

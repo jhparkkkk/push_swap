@@ -20,8 +20,8 @@ OBJ_B = 	$(SRC_B:.c=.o)
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ)
-			$(LIB) $(NAME) $(OBJ)
+$(NAME):	$(OBJ) $(OBJ_B)
+			$(LIB) $(NAME) $(OBJ) $(OBJ_B)
 		
 bonus:		$(OBJ) $(OBJ_B)
 			$(LIB) $(NAME) $(OBJ) $(OBJ_B)

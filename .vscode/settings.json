@@ -1,6 +1,8 @@
 {
     "terminal.integrated.defaultLocation": "editor",
     "files.associations": {
-        "libft.h": "c"
+        "libft.h": "c",
+        "chrono": "c",
+        "unordered_map": "c"
     }
 }

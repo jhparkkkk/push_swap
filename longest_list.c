@@ -1,64 +1,76 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   longest_list.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/28 19:07:08 by jeepark           #+#    #+#             */
+/*   Updated: 2022/02/28 20:41:21 by jeepark          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "push_swap.h"
 
-
-int *find_lis_len(t_toolbox *box)
+static int	*ft_tab_lis_len(t_toolbox *box)
 {
-	int *len;
-	int *map;
-    int i;
-    int j;
-    i = 0;
-    j = 0;
-    len = ft_calloc(box->count, sizeof(int));
-	map = ft_calloc(box->count, sizeof(int));
+	int	i;
+	int	*lis_len;
+
+	lis_len = ft_calloc(box->count, sizeof(int));
 	i = 0;
-    while(i < box->count)                                                       // J'initialise mon tableau LEN rempli de 1 
-    {   
-        len[i] = 1;
-        i++;
-    }
-    i = 1;
-    while(i < box->count)                                                       // Je check la liste la plus longue 
-    {
-        j = 0;
-        while(j < i)
-        {
-            if (box->index[j] < box->index[i] && len[i] <= len[j] + 1)
-            { 
-                len[i] = len[j] + 1;
-				map[i] = j;
-                if (box->max < len[i])
-                {
-                    box->max = len[i];
-					box->max_pos = i;
-            	}
-        	}
-			j++;
-		}
-        i++;
-    }
-	return(map);
+	while (i < box->count)
+	{
+		lis_len[i] = 1;
+		i++;
+	}
+	return (lis_len);
 }
 
-int	*ft_find_lis_pos(t_toolbox *box)
+static int	*ft_find_lis_len(t_toolbox *box, int *lis_len)
 {
-	int *map;
-	int *pos;
-	int i;
-	int j;
-	int k;
-	
+	int	*map;
+	int	i;
+	int	j;
+
+	map = ft_calloc(box->count, sizeof(int));
+	i = 1;
+	while (i++ < box->count)
+	{
+		j = 0;
+		while (j++ < i)
+		{
+			if (box->values[j] < box->values[i] && lis_len[i] <= lis_len[j] + 1)
+			{
+				lis_len[i] = lis_len[j] + 1;
+				map[i] = j;
+				if (box->max < lis_len[i])
+				{
+					box->max = lis_len[i];
+					box->max_pos = i;
+				}
+			}
+		}
+	}
+	return (map);
+}
+
+static int	*ft_find_lis_pos(t_toolbox *box, int *lis_len, int *pos)
+{
+	int	*map;
+	int	i;
+	int	j;
+	int	k;
+
 	k = 1;
-	map = find_lis_len(box);
-	pos = ft_calloc(box->max, sizeof(int));
+	map = ft_find_lis_len(box, lis_len);
 	i = box->max_pos;
 	j = box->max_pos;
 	pos[0] = i;
-	while(i >= 0)
+	while (i >= 0)
 	{
-		
-		while(j >= 0)
+		while (j >= 0)
 		{
 			if (map[i] == j)
 			{
@@ -69,32 +81,33 @@ int	*ft_find_lis_pos(t_toolbox *box)
 		}
 		i--;
 	}
-	return(pos);
+	return (pos);
 }
 
-int *ft_lis_keeper(t_toolbox *box)
+int	*ft_tab_lis(t_toolbox *box)
 {
-	int *pos;
-	int i;
-	int j;
-	int k;
-	pos = ft_find_lis_pos(box);
+	int	*pos;
+	int	*lis_len;
+	int	i;
+	int	j;
+	int	k;
+
+	lis_len = ft_tab_lis_len(box);
+	pos = ft_calloc(box->max, sizeof(int));
+	pos = ft_find_lis_pos(box, lis_len, pos);
 	box->lis = ft_calloc(box->max, sizeof(int));
 	i = 0;
 	k = 0;
-	j = box->max_pos;
-	while(i < box->max)
+	while (i < box->max)
 	{
-		j = box->max_pos;	
-		while(j >= 0)
+		j = 0;
+		while (j <= box->max_pos)
 		{
 			if (pos[i] == j)
-			{
-				box->lis[k++] = box->index[j];
-			}
-			j--;
+				box->lis[k++] = box->values[j];
+			j++;
 		}
 		i++;
 	}
-	return(&(*box->lis));
+	return (&(*box->lis));
 }

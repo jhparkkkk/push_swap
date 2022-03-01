@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 19:52:42 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/23 13:22:57 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/27 22:45:40 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-long	ft_atol(const char	*str);
+long long	ft_atol(const char	*str);
 int		ft_strcmp(char *s1, char *s2);
 
 t_list	*ft_lstnew(void *content);

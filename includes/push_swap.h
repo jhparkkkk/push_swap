@@ -6,15 +6,13 @@
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:45:49 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/25 18:42:02 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/02/28 21:20:04 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
  #define PUSH_SWAP_H
 #include "libft.h"
-
-int compteur;
 
 typedef struct s_toolbox
 {
@@ -23,7 +21,6 @@ typedef struct s_toolbox
     int         max;
     int         max_pos;
     int         *values;
-    int         *index;
     int         *lis;
     t_list_int  *list_a;
     t_list_int  *list_b;
@@ -49,8 +46,7 @@ typedef  struct s_moves
 
 /************PARSING*************/
 int         ft_check_error(char **av, int ac);
-int         *ft_index_tab_init(int ac, char **av);
-int         *ft_index_values(int ac, char **av);
+int         *ft_tab_values(int ac, char **av);
 t_list_int  *ft_list_init_tab(t_toolbox *box);
 t_toolbox   ft_toolbox_init(t_toolbox *box, int ac, char **av);
 
@@ -60,6 +56,7 @@ int     ft_lstlen(t_toolbox *box);
 int     ft_check_sorted_list_a(t_toolbox *box);
 int     ft_check_sorted_list_b(t_toolbox *box);
 int		ft_find_min(t_toolbox *box);
+int     find_min_pos(t_toolbox *box);
 int		ft_find_max(t_toolbox *box);
 
 /*************SWAP***************/
@@ -85,22 +82,29 @@ void    ft_reverse_rotate_rr(t_toolbox *box);
 t_toolbox   ft_sort_three(t_toolbox *box);
 t_toolbox   ft_sort_five(t_toolbox *box);
 
-/***************SORTING*****************/
-int *find_lis_len(t_toolbox *box);
-int	*ft_find_lis_pos(t_toolbox *box);
-int *ft_lis_keeper(t_toolbox *box);
+/******LONGEST LIST SUBSEQUENCE**********/
+int 		*ft_tab_lis(t_toolbox *box);
 
 /**************FLY TO B*****************/
-t_toolbox boarding_gate(t_toolbox *box);
-int control_visa(t_toolbox *box);
+t_toolbox	boarding_gate(t_toolbox *box);
+int 		control_visa(t_toolbox *box);
 
 /************SIMULATION*****************/
 
 
-void meta_simulation(t_toolbox *box);
-int find_target(t_toolbox *box, t_moves *menu);
-void simulation(t_moves *menu);
-void execution(t_toolbox *box, t_moves *menu);
+void 		meta_simulation(t_toolbox *box);
+int 		find_target(t_toolbox *box, t_moves *menu);
+/*void 		simulation(t_moves *menu);
+void 		execution(t_toolbox *box, t_moves *menu);*/
 
-void fasten_your_seatbelt(t_toolbox *box);
+/*****************MOVES*******************/
+void    	check_sync_rr(t_moves *menu);
+void    	check_sync_rrr(t_moves *menu);
+void    	ft_ra_rb(t_toolbox *box, t_moves *best);
+void 		ft_rra_rrb(t_toolbox *box, t_moves *best);
+void 		ft_ra_rrb(t_toolbox *box, t_moves *best);
+void 		ft_rra_rb(t_toolbox *box, t_moves *best);
+
+
+void 	fasten_your_seatbelt(t_toolbox *box);
 #endif
