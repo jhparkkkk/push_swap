@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:06:11 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/27 23:34:05 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/01 16:25:22 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int	ft_overflow(char **av, int ac)
 
 int	ft_check_error(char **av, int ac)
 {
-	if (av[1][0] == '\0')
+	if (av[1] && av[1][0] == '\0')
 		return (1);
 	if (ft_overflow(av, ac))
 		return (1);

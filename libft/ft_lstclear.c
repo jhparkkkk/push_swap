@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 21:25:07 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/13 16:40:48 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/01 17:02:09 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	*lst = NULL;
 }
 
-void	ft_lstclear_int(t_list_int **lst, void (*del)(int))
+void	ft_lstclear_int(t_list_int **lst)
 {
 	t_list_int	*box;
 
@@ -36,7 +36,8 @@ void	ft_lstclear_int(t_list_int **lst, void (*del)(int))
 	while (*lst)
 	{
 		box = (*lst)->next;
-		ft_lstdelone_int(*lst, del);
+		if (box)
+			free(box);
 		*lst = box;
 	}
 	*lst = NULL;

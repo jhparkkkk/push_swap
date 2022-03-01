@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:43:22 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/28 19:52:46 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/01 19:35:45 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ int ft_check_sorted_list_a(t_toolbox *box)
 {
 	t_list_int *tmp;
     
-    if (box->list_a == NULL)
-        return (0);
+    //if (box->list_a == NULL)
+    //	return (0);
 	tmp = box->list_a;
 	while(tmp->next)
 	{

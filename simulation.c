@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 11:40:52 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/28 21:19:26 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/01 15:41:57 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static t_moves	menu_settings(t_toolbox *box, t_moves *menu, int i)
 {
 	menu->rb = i;
-	menu->ra = find_target(box, menu);
+	menu->ra = find_target(box, menu, 0);
 	menu->rra = box->max - menu->ra;
 	menu->rrb = box->count - menu->rb;
 	menu->ra_opti = menu->ra;
@@ -33,6 +33,7 @@ static t_moves	menu_settings(t_toolbox *box, t_moves *menu, int i)
 
 static t_moves	reset_settings(t_moves *menu)
 {
+	//menu = {.};
 	menu->rb = 0;
 	menu->ra = 0;
 	menu->rra = 0;

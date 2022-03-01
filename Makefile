@@ -40,8 +40,8 @@ all:		$(NAME)
 $(LIBFT):
 			$(MAKE) -C $(@D) $(@F)
 
-$(NAME):	$(OBJS) $(LIBFT)
-			$(CC) $(OBJS) $(LFLAGS) -g3 -fsanitize=address  $(OUTPUT_OPTION)  
+$(NAME):	$(LIBFT) $(OBJS) 
+			$(CC) $(OBJS) $(LFLAGS) $(OUTPUT_OPTION)  
 
 clean:
 			$(RM) $(NAME) $(OBJS)

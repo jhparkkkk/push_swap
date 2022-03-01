@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/28 20:09:20 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/01 20:05:37 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,24 @@ int	main(int ac, char **av)
 		ft_sort_three(&box);
 	if (ac == 6)
 		ft_sort_five(&box);
+	// print_list(box.list_a);
+	
 	if (ac > 6 || ac == 5)
-		boarding_gate(&box);
-	roulette = box.count;
-	while (roulette >= 0)
 	{
-		meta_simulation(&box);
-		roulette--;
+		boarding_gate(&box);
+		roulette = box.count;
+		while (roulette >= 0)
+		{
+			meta_simulation(&box);
+			roulette--;
+		}
+		if (box.list_a->content != ft_find_min(&box))
+			fasten_your_seatbelt(&box);
+		free(box.lis);
 	}
-	if (box.list_a->content != 0)
-		fasten_your_seatbelt(&box);
+	//print_list(box.list_a);
+	free(box.values);
+	ft_toolbox_free(&box);
+	
 	return (0);
 }

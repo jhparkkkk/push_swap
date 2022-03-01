@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:45:49 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/28 21:20:04 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/01 16:51:03 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int 		control_visa(t_toolbox *box);
 
 
 void 		meta_simulation(t_toolbox *box);
-int 		find_target(t_toolbox *box, t_moves *menu);
+int 		find_target(t_toolbox *box, t_moves *menu, int i);
 /*void 		simulation(t_moves *menu);
 void 		execution(t_toolbox *box, t_moves *menu);*/
 
@@ -107,4 +107,7 @@ void 		ft_rra_rb(t_toolbox *box, t_moves *best);
 
 
 void 	fasten_your_seatbelt(t_toolbox *box);
+
+void	ft_toolbox_free(t_toolbox *box);
+
 #endif
