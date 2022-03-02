@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:45:49 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 15:17:15 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 16:18:30 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void    ft_reverse_rotate_b(t_toolbox *box);
 void    ft_reverse_rotate_rr(t_toolbox *box);
 
 /*********SORTING LITTLE LISTS***********/
-t_toolbox   ft_sort_three(t_toolbox *box);
+t_toolbox  ft_sort_three(t_toolbox *box);
 t_toolbox   ft_sort_five(t_toolbox *box);
 
 /******LONGEST LIST SUBSEQUENCE**********/

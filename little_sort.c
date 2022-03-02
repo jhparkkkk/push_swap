@@ -6,20 +6,20 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 18:52:54 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/01 16:11:19 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 17:42:26 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-static t_toolbox	ft_sort_two(t_toolbox *box) // mettre en void
+static t_toolbox	ft_sort_two(t_toolbox *box)
 {
 	if (box->list_a->content > box->list_a->next->content)
 	{
 		ft_swap_a(box);
 	}
-	return(*box);
+	return (*box);
 }
 
 t_toolbox	ft_sort_three(t_toolbox *box)
@@ -28,10 +28,7 @@ t_toolbox	ft_sort_three(t_toolbox *box)
 	int	max;
 
 	if (box->count == 2)
-	{
-		ft_sort_two(box);
-		return (*box);
-	}
+		return (ft_sort_two(box), *box);
 	min = ft_find_min(box);
 	max = ft_find_max(box);
 	while (box->list_a->next->next->content != max)
@@ -64,16 +61,13 @@ t_toolbox	ft_sort_five(t_toolbox *box)
 		}
 	}
 	ft_push_b(box);
-	min = find_min_pos(box);
-	while (min > 0)
+	min = find_min_pos(box) + 1;
+	while (--min > 0)
 	{
 		ft_rotate_a(box);
 		write(1, "ra\n", 3);
-		min--;
+		//min--;
 	}
 	ft_push_b(box);
-	ft_sort_three(box);
-	ft_push_a(box);
-	ft_push_a(box);
-	return (*box);
+	return (ft_sort_three(box), ft_push_a(box), ft_push_a(box), *box);
 }
