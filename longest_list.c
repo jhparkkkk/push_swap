@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   longest_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 19:07:08 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/01 19:41:31 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 10:27:54 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	*ft_tab_lis_len(t_toolbox *box)
 	int	*lis_len;
 
 	lis_len = ft_calloc(box->count, sizeof(int));
+	if (!lis_len)
+		return (0);
 	i = 0;
 	while (i < box->count)
 	{
@@ -35,11 +37,11 @@ static int	*ft_find_lis_len(t_toolbox *box, int *lis_len)
 	int	j;
 
 	map = ft_calloc(box->count, sizeof(int));
-	i = 1;
-	while (i < box->count)
+	i = 0;
+	while (++i < box->count)
 	{
-		j = 0;
-		while (j < i)
+		j = -1;
+		while (++j < i)
 		{
 			if (box->values[j] < box->values[i] && lis_len[i] <= lis_len[j] + 1)
 			{
@@ -51,9 +53,7 @@ static int	*ft_find_lis_len(t_toolbox *box, int *lis_len)
 					box->max_pos = i;
 				}
 			}
-			j++;
 		}
-		i++;
 	}
 	return (map);
 }
@@ -61,7 +61,7 @@ static int	*ft_find_lis_len(t_toolbox *box, int *lis_len)
 static int	*ft_find_lis_pos(t_toolbox *box, int *lis_len)
 {
 	int	*map;
-	int *pos;
+	int	*pos;
 	int	i;
 	int	j;
 	int	k;
@@ -69,38 +69,26 @@ static int	*ft_find_lis_pos(t_toolbox *box, int *lis_len)
 	k = 1;
 	map = ft_find_lis_len(box, lis_len);
 	pos = ft_calloc(box->max, sizeof(int));
-	if (!pos)
-		return 0;
-	i = box->max_pos;
-	j = box->max_pos;
-	pos[0] = i;
-	while (i >= 0)
+	pos[0] = box->max_pos;
+	i = box->max_pos + 1;
+	j = box->max_pos + 1;
+	while (--i >= 0)
 	{
-		while (j >= 0)
+		while (--j >= 0)
 		{
 			if (map[i] == j && k < box->max)
 			{
 				i = j;
-				pos[k] = j;
-				k++;
+				pos[k++] = j;
 			}
-			j--;
 		}
-		i--;
 	}
-	i = 0;
-	while(i < box->max)
-	{
-		// printf("POS[%d] = %d\n", i, pos[i]);
-		i++;
-	}
-	free(map);
-	return (pos);
+	return (free(map), pos);
 }
 
 int	*ft_tab_lis(t_toolbox *box)
 {
-	int *pos;
+	int	*pos;
 	int	*lis_len;
 	int	i;
 	int	j;
@@ -122,13 +110,5 @@ int	*ft_tab_lis(t_toolbox *box)
 		}
 		i++;
 	}
-	i = 0;
-	while(i < box->max)
-	{
-		// printf("LIS[%d] = %d\n", i, box->lis[i]);
-		i++;
-	}
-	free(pos);
-	free(lis_len);
-	return (&(*box->lis));
+	return (free(pos), free(lis_len), &(*box->lis));
 }

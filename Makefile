@@ -9,7 +9,6 @@ INC			=	-I includes -I libft
 CFLAGS		=	-Wall -Wextra -Werror -g
 
 LFLAGS		=	-I./libft -lft -L./libft
-#OPTIONS		= -I$(INC_DIR) -I./libft -lft -L./libft
 
 LIBFT		=	./libft/libft.a
 

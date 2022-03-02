@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 17:42:55 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/28 17:21:45 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 11:54:20 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 long long	ft_atol(const char	*str)
 {
-	long	nb;
-	int		neg;
+	long long	nb;
+	int			neg;
 
 	nb = 0;
 	neg = 1;

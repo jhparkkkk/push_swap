@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 21:25:07 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/01 17:02:09 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 11:55:47 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,3 @@ void	ft_lstclear_int(t_list_int **lst)
 	}
 	*lst = NULL;
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 11:40:52 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/01 15:41:57 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 10:32:15 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,6 @@ static t_moves	menu_settings(t_toolbox *box, t_moves *menu, int i)
 	menu->rb_opti = menu->rb;
 	menu->rra_opti = menu->rra;
 	menu->rrb_opti = menu->rrb;
-	menu->rr = 0;
-	menu->rrr = 0;
-	menu->price = 0;
-	menu->cost = 0;
-	menu->execution = 0;
-	return (*menu);
-}
-
-static t_moves	reset_settings(t_moves *menu)
-{
-	//menu = {.};
-	menu->rb = 0;
-	menu->ra = 0;
-	menu->rra = 0;
-	menu->rrb = 0;
-	menu->ra_opti = 0;
-	menu->rb_opti = 0;
-	menu->rra_opti = 0;
-	menu->rrb_opti = 0;
 	menu->rr = 0;
 	menu->rrr = 0;
 	menu->price = 0;
@@ -67,13 +48,12 @@ static void	execution(t_toolbox *box, t_moves *best)
 
 static void	simulation(t_moves *menu)
 {
-	int	*price;
+	int	price[4];
 	int	i;
 	int	cost;
 
 	i = 0;
 	cost = 0;
-	price = ft_calloc(4, sizeof(int));
 	price[0] = menu->ra_opti + menu->rb_opti + menu->rr;
 	price[1] = menu->rra_opti + menu->rrb_opti + menu->rrr;
 	price[2] = menu->ra + menu->rrb;
@@ -88,14 +68,13 @@ static void	simulation(t_moves *menu)
 		}
 		i++;
 	}
-	free(price);
 }
 
 void	meta_simulation(t_toolbox *box)
 {
 	t_moves	menu;
 	t_moves	best;
-	int	i;
+	int		i;
 
 	i = 0;
 	menu = menu_settings(box, &menu, i);
@@ -117,5 +96,5 @@ void	meta_simulation(t_toolbox *box)
 		i++;
 	}
 	execution(box, &best);
-	reset_settings(&menu);
+	menu = (t_moves){};
 }

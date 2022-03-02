@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:06:11 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/01 16:25:22 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 11:03:17 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int	ft_is_numeric(char **av)
 		j = 0;
 		while (av[i][j])
 		{
-			if (ft_isdigit(av[i][j]) == 0 && av[i][j] != ' ' && av[i][j] != '-')
+			if ((ft_isdigit(av[i][j]) == 0 && av[i][j] != ' ' && av[i][j] != '-')
+			|| (av[i][j] == ' ' && av[i][j + 1] == ' '))
 				return (1);
 			if (av[i][j] == '-')
 			{
@@ -66,7 +67,9 @@ static int	ft_overflow(char **av, int ac)
 	i = 1;
 	while (i < ac)
 	{
-		if (ft_strlen(av[i]) >= 11)
+		if (ft_strlen(av[i]) >= 19)
+			return (1);
+		if (ft_strlen(av[i]) >= 10)
 		{
 			if (ft_atol(av[i]) < INT_MIN || ft_atol(av[i]) > INT_MAX)
 				return (1);

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:11:09 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/01 17:12:40 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 13:49:34 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int	*ft_tab_values(int ac, char **av)
+static int	*ft_tab_values(int ac, char **av)
 {
 	int	i;
 	int	j;
@@ -27,7 +27,7 @@ int	*ft_tab_values(int ac, char **av)
 	return (tab_values);
 }
 
-t_list_int	*ft_lst_init(t_toolbox *box)
+static t_list_int	*ft_lst_init(t_toolbox *box)
 {
 	int	i;
 
@@ -38,6 +38,20 @@ t_list_int	*ft_lst_init(t_toolbox *box)
 	return (&(*box->list_a));
 }
 
+void	ft_list_free(t_toolbox *box)
+{
+	t_list_int	*tmp;
+	t_list_int	*bin;
+
+	tmp = box->list_a;
+	while (tmp)
+	{
+		bin = tmp->next;
+		free(tmp);
+		tmp = bin;
+	}
+}
+
 t_toolbox	ft_toolbox_init(t_toolbox *box, int ac, char **av)
 {
 	box->count = ac - 1;
@@ -46,19 +60,7 @@ t_toolbox	ft_toolbox_init(t_toolbox *box, int ac, char **av)
 	box->values = ft_tab_values(ac, av);
 	if (ac >= 5)
 		box->lis = ft_tab_lis(box);
-	box->list_a = ft_lst_init(box); // ft_lstclear(box->list_a)
+	box->list_a = ft_lst_init(box);
 	box->list_b = NULL;
 	return (*box);
-}
-void	ft_toolbox_free(t_toolbox *box)
-{
-	t_list_int	*head;
-	head = box->list_a;
-	t_list_int	*temp;
-	while (head)
-	{
-		temp = head->next;
-		free(head);
-		head = temp;
-	}
 }

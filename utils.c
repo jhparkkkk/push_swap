@@ -3,136 +3,118 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:43:22 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/01 19:35:45 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 11:52:56 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int ft_lstlen(t_toolbox *box)
+int	ft_lstlen(t_toolbox *box)
 {
-    t_list_int *tmp;
-    int i;
-    
-    tmp = NULL;
-    i = 0;
-    tmp = box->list_a;
-    while (tmp->next != NULL)
-    {   
-        tmp = tmp->next;
-        i++;
-    }
-    i++;
-    return i;  
+	t_list_int	*tmp;
+	int			i;
+
+	i = 0;
+	tmp = box->list_a;
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	i++;
+	return (i);
 }
 
-void print_list(t_list_int *list)
+/*void print_list(t_list_int *list)
 {
-    t_list_int  *tmp = list;
-    if (!list)
-    {    
-        return ;
-    }
-   	while (tmp->next != NULL)
-    {
-        printf("%d\n", tmp->content);
-        tmp = tmp->next;
-    }
-    printf("%d\n", tmp->content);
-}
+	t_list_int  *tmp = list;
+	if (!list)
+	{    
+		return ;
+	}
+	while (tmp->next != NULL)
+	{
+		printf("%d\n", tmp->content);
+		tmp = tmp->next;
+	}
+	printf("%d\n", tmp->content);
+}*/
 
-int		ft_find_min(t_toolbox *box)
+int	ft_find_min(t_toolbox *box)
 {
-	int	min;
-    t_list_int *tmp;
-    tmp = box->list_a;
-    min = tmp->content;
+	int			min;
+	t_list_int	*tmp;
+
+	tmp = box->list_a;
+	min = tmp->content;
 	while (tmp->next)
 	{
-        if (tmp->content < min)
+		if (tmp->content < min)
 			min = tmp->content;
-        tmp = tmp->next;
-    }
+		tmp = tmp->next;
+	}
 	if (tmp->content < min)
-			min = tmp->content;
+		min = tmp->content;
 	return (min);
 }
 
-int find_min_pos(t_toolbox *box)
+int	find_min_pos(t_toolbox *box)
 {
-    int min;
-    int pos;
-    t_list_int *tmp;
-    
-    min = ft_find_min(box);
-    pos = 0;
-    tmp = box->list_a;
-    while(tmp->next)
-    {
-        if (tmp->content == min)
-            return (pos);
-        tmp = tmp->next;
-        pos++;
-    }
-    if (tmp->content == min)
-        return(pos);
-    return(0);
-}
+	int			min;
+	int			pos;
+	t_list_int	*tmp;
 
-int		ft_find_max(t_toolbox *box)
-{
-	int	max;
-    t_list_int *tmp;
-    if (!box->list_a)
-        return (0);
-    tmp = box->list_a;
-    max = tmp->content;
+	min = ft_find_min(box);
+	pos = 0;
+	tmp = box->list_a;
 	while (tmp->next)
 	{
-        if (tmp->content > max)
+		if (tmp->content == min)
+			return (pos);
+		tmp = tmp->next;
+		pos++;
+	}
+	if (tmp->content == min)
+		return (pos);
+	return (0);
+}
+
+int	ft_find_max(t_toolbox *box)
+{
+	int			max;
+	t_list_int	*tmp;
+
+	if (!box->list_a)
+		return (0);
+	tmp = box->list_a;
+	max = tmp->content;
+	while (tmp->next)
+	{
+		if (tmp->content > max)
 			max = tmp->content;
-        tmp = tmp->next;
-    }
+		tmp = tmp->next;
+	}
 	if (tmp->content > max)
-		max = tmp->content;  
+		max = tmp->content;
 	return (max);
 }
 
-int ft_check_sorted_list_a(t_toolbox *box)
+int	ft_check_sorted_list_a(t_toolbox *box)
 {
-	t_list_int *tmp;
-    
-    //if (box->list_a == NULL)
-    //	return (0);
+	t_list_int	*tmp;
+
+	if (box->list_a == NULL)
+		return (0);
 	tmp = box->list_a;
-	while(tmp->next)
+	while (tmp->next)
 	{
 		if (tmp->content > tmp->next->content)
 			return (1);
 		tmp = tmp->next;
 	}
-	return(0);
-}
-
-int ft_check_sorted_list_b(t_toolbox *box)
-{
-	t_list_int *tmp;
-
-    if (box->list_b == NULL)
-    {
-        write(1, "list is empty\n", 14);
-        return (0);
-    }
-	tmp = box->list_b;
-	while(tmp->next)
-	{
-		if (tmp->content > tmp->next->content)
-			return(1);
-		tmp = tmp->next;
-	}
-	return(0);
+	return (0);
 }
