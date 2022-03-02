@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:06:11 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 15:47:42 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 18:47:01 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int	ft_is_numeric(char **av)
 		j = 0;
 		while (av[i][j])
 		{
-			if ((ft_isdigit(av[i][j]) == 0 && av[i][j] != ' ' && av[i][j] != '-')
+			if ((ft_isdigit(av[i][j]) == 0 && av[i][j] != ' '
+			&& av[i][j] != '-')
 			|| (av[i][j] == ' ' && av[i][j + 1] == ' '))
 				return (1);
 			if (av[i][j] == '-')

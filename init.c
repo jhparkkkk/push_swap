@@ -6,20 +6,20 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:11:09 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 17:48:16 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 18:54:31 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-static int ft_check_values(int *tab, int ac)
+static int	ft_check_values(int *tab, int ac)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 	
 	i = 0;
-	while(i < ac)
+	while (i < ac)
 	{
 		j = i + 1;
 		while (j < ac)
@@ -33,7 +33,7 @@ static int ft_check_values(int *tab, int ac)
 	return(0);
 }
 
-static int	*ft_tab_values(int ac, char **av)
+static int	*ft_tab_values(t_toolbox *box, int ac, char **av)
 {
 	int	i;
 	int	j;
@@ -47,6 +47,7 @@ static int	*ft_tab_values(int ac, char **av)
 	if (ft_check_values(tab_values, ac) == 1)
 	{
 		free(tab_values);
+		free(box->values);
 		write(2, "Error\n", 6);
 		exit(1);
 	}
@@ -83,7 +84,7 @@ t_toolbox	ft_toolbox_init(t_toolbox *box, int ac, char **av)
 	box->count = ac - 1;
 	box->max = 0;
 	box->max_pos = 0;
-	box->values = ft_tab_values(ac, av);
+	box->values = ft_tab_values(box, ac, av);
 	if (ac == 5 || ac > 6)
 		box->lis = ft_tab_lis(box);
 	box->list_a = ft_lst_init(box);
