@@ -43,7 +43,7 @@ $(NAME):	$(LIBFT) $(OBJS)
 			$(CC) $(OBJS) $(LFLAGS) $(OUTPUT_OPTION)  
 
 clean:
-			$(RM) $(NAME) $(OBJS)
+			$(RM) $(NAME) $(OBJS) $(LIBFT)
 
 fclean:		clean
 			$(RM) all

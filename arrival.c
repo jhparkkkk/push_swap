@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arrival.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 19:12:46 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 11:50:53 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 15:03:55 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	fasten_your_seatbelt(t_toolbox *box)
 	}
 	if (distance >= len / 2)
 	{
-		while (distance != len / 2)
+		while (distance != len)
 		{
 			ft_reverse_rotate_a(box);
 			write(1, "rra\n", 4);

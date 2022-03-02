@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:45:49 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 13:50:34 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/02 15:17:15 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int         ft_check_error(char **av, int ac);
 t_toolbox   ft_toolbox_init(t_toolbox *box, int ac, char **av);
 
 /*************UTILS**************/
-//void    print_list(t_list_int *list);
+void    print_list(t_list_int *list);
 int     ft_lstlen(t_toolbox *box);
 int     ft_check_sorted_list_a(t_toolbox *box);
 //int     ft_check_sorted_list_b(t_toolbox *box);
