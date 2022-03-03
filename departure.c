@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   departure.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:42:53 by jeepark           #+#    #+#             */
-/*   Updated: 2022/02/28 16:34:15 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/03 18:48:57 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ int	control_visa(t_toolbox *box)
 	return (1);
 }
 
+int check_baggage(t_toolbox *box)
+{
+	t_list_int	*tmp;
+
+	if (box->list_a == NULL)
+		return (0);
+	tmp = box->list_a;
+	while (tmp->next)
+	{
+		if (tmp->content < tmp->next->content)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 t_toolbox	boarding_gate(t_toolbox *box)
 {
 	int	passenger;
@@ -34,6 +50,8 @@ t_toolbox	boarding_gate(t_toolbox *box)
 
 	passenger = 0;
 	scanning = box->count;
+	if (check_baggage(box) == 0)
+		
 	while (passenger <= scanning)
 	{
 		if (control_visa(box) == 0)

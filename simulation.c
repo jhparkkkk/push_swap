@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 11:40:52 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 20:33:28 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/03 16:45:44 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static t_moves	menu_settings(t_toolbox *box, t_moves *menu, int i)
 {
 	menu->rb = i;
-	menu->ra = find_target(box, menu, 0);
+	menu->ra = find_target(box, menu, 0, 0);
 	menu->rra = box->max - menu->ra;
 	menu->rrb = box->count - menu->rb;
 	menu->ra_opti = menu->ra;
@@ -77,52 +77,23 @@ void	meta_simulation(t_toolbox *box)
 	t_moves	best;
 	int		i;
 
-	clock_t start, end;
-    double cpu_time_used;
 	i = 0;
 	menu = menu_settings(box, &menu, i);
 	check_sync_rr(&menu);
 	check_sync_rrr(&menu);
-	//start = clock();
 	simulation(&menu);
-	//end = clock();
-	//cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-	//printf("\nDEPART = %f\n", cpu_time_used);
 	ft_memcpy(&best, &menu, sizeof(t_moves));
 	i++;
-	//start = clock();
 	while (i < box->count)
 	{
-		start = clock();
 		menu = menu_settings(box, &menu, i);
-		end = clock();
-		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-		printf("\nMENU = %f\n", cpu_time_used);
-		//start = clock();
-		//start = clock();
 		check_sync_rr(&menu);
 		check_sync_rrr(&menu);
-		//end = clock();
-		//cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-		//printf("\nSYNC = %f\n", cpu_time_used);
-		//start = clock();
 		simulation(&menu);
-		//end = clock();
-		//cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-		//printf("\nSIMULATION  = %f\n", cpu_time_used);
 		if (menu.cost < best.cost)
-		{
 			best = menu;
-		}
 		i++;
 	}
-	//end = clock();
-	//cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-	//printf("\nBEST = %f\n", cpu_time_used);
-	//start = clock();
 	execution(box, &best);
-	//end = clock();
-	//cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-	//printf("\nEXECUTION = %f\n", cpu_time_used);
 	menu = (t_moves){};
 }

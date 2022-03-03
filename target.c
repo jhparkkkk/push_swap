@@ -6,13 +6,14 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:42:36 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 20:31:02 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/03 16:48:43 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 #include <time.h>
+
 static int	spy_content(t_toolbox *box, t_moves *menu)
 {
 	t_list_int	*spy;
@@ -32,25 +33,28 @@ static int	spy_content(t_toolbox *box, t_moves *menu)
 	return (result);
 }
 
-int	find_target(t_toolbox *box, t_moves *menu, int i)
+static void	find_lim(t_toolbox *box, int *lim)
 {
-	clock_t start, end;
-    double cpu_time_used;
+	lim[0] = ft_find_max(box);
+	lim[1] = ft_find_min(box);
+}
+
+int	find_target(t_toolbox *box, t_moves *menu, int i, int scanning)
+{
 	t_list_int	*target;
 	int			spy;
-	int			scanning;
+	int			lim[2];
 	int			distance;
 
 	if (box->list_b == NULL)
 		return (0);
-	start = clock();
 	target = box->list_a;
 	spy = spy_content(box, menu);
-	scanning = 0;
-	distance = ft_find_max(box) - spy;
+	find_lim(box, lim);
+	distance = lim[0] - spy;
 	while (target)
 	{
-		if (spy > ft_find_max(box) && target->content == ft_find_min(box))
+		if (spy > lim[0] && target->content == lim[1])
 			return (i);
 		if (target->content > spy && target->content - spy <= distance)
 		{
@@ -60,8 +64,5 @@ int	find_target(t_toolbox *box, t_moves *menu, int i)
 		target = target->next;
 		i++;
 	}
-	end = clock();
-	cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-	printf("\nTARGET = %f\n", cpu_time_used);
 	return (scanning);
 }

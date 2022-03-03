@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:43:22 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 18:26:26 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/03 18:34:49 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_lstlen(t_toolbox *box)
 	return (i);
 }
 
-/*void print_list(t_list_int *list)
+void print_list(t_list_int *list)
 {
 	t_list_int  *tmp = list;
 	if (!list)
@@ -42,7 +42,7 @@ int	ft_lstlen(t_toolbox *box)
 		tmp = tmp->next;
 	}
 	printf("%d\n", tmp->content);
-}*/
+}
 
 int	ft_find_min(t_toolbox *box)
 {

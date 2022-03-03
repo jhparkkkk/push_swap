@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:11:09 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 18:54:31 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/03 18:26:43 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_check_values(int *tab, int ac)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (i < ac)
 	{
@@ -25,12 +25,12 @@ static int	ft_check_values(int *tab, int ac)
 		while (j < ac)
 		{
 			if (tab[i] == tab[j])
-				return(1);
+				return (1);
 			j++;
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 static int	*ft_tab_values(t_toolbox *box, int ac, char **av)
@@ -38,7 +38,7 @@ static int	*ft_tab_values(t_toolbox *box, int ac, char **av)
 	int	i;
 	int	j;
 	int	*tab_values;
-
+	(void)box;
 	i = 1;
 	j = 0;
 	tab_values = ft_calloc(ac, sizeof(int));
@@ -47,7 +47,6 @@ static int	*ft_tab_values(t_toolbox *box, int ac, char **av)
 	if (ft_check_values(tab_values, ac) == 1)
 	{
 		free(tab_values);
-		free(box->values);
 		write(2, "Error\n", 6);
 		exit(1);
 	}
