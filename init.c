@@ -6,11 +6,10 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:11:09 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/04 17:38:28 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/04 17:49:46 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 
 static int	ft_check_values(int *tab, int ac)

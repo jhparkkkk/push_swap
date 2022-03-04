@@ -6,11 +6,10 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:43:22 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/04 17:08:13 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/04 17:49:43 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 
 int	ft_lstlen(t_toolbox *box)

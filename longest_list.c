@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 19:07:08 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/04 17:14:15 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/04 17:46:29 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,25 +90,25 @@ int	*ft_tab_lis(t_toolbox *box)
 {
 	int	*pos;
 	int	*lis_len;
-	int	i;
-	int	j;
-	int	k;
+	int	index[3];
 
 	lis_len = ft_tab_lis_len(box);
 	pos = ft_find_lis_pos(box, lis_len);
+	if (pos[0] == 0 && pos[1] == 0)
+		return (NULL);
 	box->lis = ft_calloc(box->max, sizeof(int));
-	i = 0;
-	k = 0;
-	while (i < box->max)
+	index[0] = 0;
+	index[2] = 0;
+	while (index[0] < box->max)
 	{
-		j = 0;
-		while (j <= box->max_pos)
+		index[1] = 0;
+		while (index[1] <= box->max_pos)
 		{
-			if (pos[i] == j)
-				box->lis[k++] = box->values[j];
-			j++;
+			if (pos[index[0]] == index[1])
+				box->lis[index[2]++] = box->values[index[1]];
+			index[1]++;
 		}
-		i++;
+		index[0]++;
 	}
 	return (free(pos), free(lis_len), &(*box->lis));
 }
