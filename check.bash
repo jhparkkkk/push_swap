@@ -36,7 +36,7 @@ function check_error() {
 	for i in "${array[@]}"
 	do
 		OUT=$(./push_swap $i)
-		echo $OUT | tr ' ' '\n' | ./checker_linux $i | change_color | tr '\n' ' '
+		echo $OUT | tr ' ' '\n' | ./checker $i | change_color | tr '\n' ' '
 	done
 	echo ""
 }
@@ -46,12 +46,12 @@ function testarray() {
 	printf "${COLOR_BLUE}Test of %d numbers:\n$COLOR_NC" $len
 	valgrind --leak-check=full ./push_swap $array &> output.log && grep -A5 "LEAK SUMMARY:" output.log && rm output.log
 	OUT=$(./push_swap)
-	echo $OUT | tr ' ' '\n' | ./checker_linux | change_color | tr '\n' ' '
+	echo $OUT | tr ' ' '\n' | ./checker | change_color | tr '\n' ' '
 	echo $OUT | wc -w | tr '\n' ' '
 	for i in "${array[@]}"
 	do
 		OUT=$(./push_swap $i)
-		echo $OUT | tr ' ' '\n' | ./checker_linux $i | change_color | tr '\n' ' '
+		echo $OUT | tr ' ' '\n' | ./checker $i | change_color | tr '\n' ' '
 		echo $OUT | wc -w | tr '\n' ' '
 	done
 	echo ""
@@ -65,7 +65,7 @@ function testbig() {
 	do
 		ARGS=$(ruby -e "puts (1..$1).to_a.shuffle.join(' ')")
 		OUT=$(./push_swap $ARGS)
-		echo $OUT | tr ' ' '\n' | ./checker_linux $ARGS | change_color | tr '\n' ' '
+		echo $OUT | tr ' ' '\n' | ./checker $ARGS | change_color | tr '\n' ' '
 		echo $OUT | wc -w | tr '\n' ' '
 	done
 	echo ""

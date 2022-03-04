@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   departure.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:42:53 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/03 18:48:57 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/04 14:36:48 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,14 @@ int	control_visa(t_toolbox *box)
 	return (1);
 }
 
-int check_baggage(t_toolbox *box)
+void	ft_strictly_decreasing_values(t_toolbox *box, int scanning)
 {
-	t_list_int	*tmp;
-
-	if (box->list_a == NULL)
-		return (0);
-	tmp = box->list_a;
-	while (tmp->next)
-	{
-		if (tmp->content < tmp->next->content)
-			return (1);
-		tmp = tmp->next;
+	while(--scanning > 0)
+	{	
+		ft_reverse_rotate_a(box);
+		write(1, "rra\n", 4);
+		ft_push_b(box);
 	}
-	return (0);
 }
 
 t_toolbox	boarding_gate(t_toolbox *box)
@@ -50,18 +44,19 @@ t_toolbox	boarding_gate(t_toolbox *box)
 
 	passenger = 0;
 	scanning = box->count;
-	if (check_baggage(box) == 0)
-		
-	while (passenger <= scanning)
+	if (!box->lis)
+		ft_strictly_decreasing_values(box, scanning);
+	else 
 	{
-		if (control_visa(box) == 0)
+		while (passenger <= scanning)
 		{
-			ft_rotate_a(box);
-			write(1, "ra\n", 3);
-		}
-		else
-		{
-			ft_push_b(box);
+			if (control_visa(box) == 0)
+			{
+				ft_rotate_a(box);
+				write(1, "ra\n", 3);
+			}
+			else
+				ft_push_b(box);
 		}
 		passenger++;
 	}

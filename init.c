@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:11:09 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/03 18:26:43 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/04 01:48:48 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,11 @@ t_toolbox	ft_toolbox_init(t_toolbox *box, int ac, char **av)
 	box->max = 0;
 	box->max_pos = 0;
 	box->values = ft_tab_values(box, ac, av);
+	
 	if (ac == 5 || ac > 6)
+	{
 		box->lis = ft_tab_lis(box);
+	}
 	box->list_a = ft_lst_init(box);
 	box->list_b = NULL;
 	return (*box);
