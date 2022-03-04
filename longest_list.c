@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   longest_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeepark <jeepark@student42.fr>             +#+  +:+       +#+        */
+/*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 19:07:08 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 10:27:54 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/04 17:14:15 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,27 +62,27 @@ static int	*ft_find_lis_pos(t_toolbox *box, int *lis_len)
 {
 	int	*map;
 	int	*pos;
-	int	i;
-	int	j;
-	int	k;
+	int	index[3];
 
-	k = 1;
+	index[2] = 1;
 	map = ft_find_lis_len(box, lis_len);
 	pos = ft_calloc(box->max, sizeof(int));
 	pos[0] = box->max_pos;
-	i = box->max_pos + 1;
-	j = box->max_pos + 1;
-	while (--i >= 0)
+	index[0] = box->max_pos + 1;
+	index[1] = box->max_pos + 1;
+	while (--index[0] >= 0)
 	{
-		while (--j >= 0)
+		while (--index[1] >= 0)
 		{
-			if (map[i] == j && k < box->max)
+			if (map[index[0]] == index[1] && index[2] < box->max)
 			{
-				i = j;
-				pos[k++] = j;
+				index[0] = index[1];
+				pos[index[2]++] = index[1];
 			}
 		}
 	}
+	if (ft_memcmp(map, pos, box->max_pos) == 0)
+		box->max = 1;
 	return (free(map), pos);
 }
 

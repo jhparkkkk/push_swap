@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/03 18:39:25 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/04 17:06:29 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ int	main(int ac, char **av)
 			fasten_your_seatbelt(&box);
 		free(box.lis);
 	}
-	//print_list(box.list_a);
 	return (free(box.values), ft_list_free(&box), 0);
 }

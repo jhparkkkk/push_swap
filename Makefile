@@ -43,8 +43,9 @@ $(NAME):	$(LIBFT) $(OBJS)
 			$(CC) $(OBJS) $(LFLAGS) $(OUTPUT_OPTION)  
 
 clean:
-			$(RM) $(NAME) $(OBJS) $(LIBFT)
-
+			$(RM) $(NAME) $(OBJS)
+			$(RM) ./libft/*.o
+		
 fclean:		clean
 			$(RM) all
 

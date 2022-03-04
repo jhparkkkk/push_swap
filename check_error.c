@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:06:11 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 18:47:01 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/04 17:36:09 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ static int	ft_overflow(char **av, int ac)
 
 int	ft_check_error(char **av, int ac)
 {
-	if (av[1] && av[1][0] == '\0')
-		return (1);
+	//if (av[1] && av[1][0] == '\0')
+	//	return (1);
 	if (ft_overflow(av, ac))
 		return (1);
 	if (ft_is_numeric(av) == 1)
