@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:45:49 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/03 18:35:13 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/05 22:25:46 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_moves
 	int			execution;
 }				t_moves;
 
-int			ft_check_error(char **av, int ac);
+void		ft_check_error(char **av, int ac);
 t_toolbox	ft_toolbox_init(t_toolbox *box, int ac, char **av);
 
 int			ft_lstlen(t_toolbox *box);
@@ -68,6 +68,8 @@ void		ft_reverse_rotate_rr(t_toolbox *box);
 t_toolbox	ft_sort_three(t_toolbox *box);
 t_toolbox	ft_sort_five(t_toolbox *box);
 
+void		ft_init_lis_pos(int **map, int **pos, int *lis_len, t_toolbox *box);
+int			*ft_find_lis_len(t_toolbox *box, int *lis_len);
 int			*ft_tab_lis(t_toolbox *box);
 
 t_toolbox	boarding_gate(t_toolbox *box);
@@ -84,7 +86,5 @@ void		ft_rra_rb(t_toolbox *box, t_moves *best);
 void		fasten_your_seatbelt(t_toolbox *box);
 
 void		ft_list_free(t_toolbox *box);
-
-void		print_list(t_list_int *list);
 
 #endif

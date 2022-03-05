@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:11:09 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/04 17:49:46 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/05 22:16:57 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int	ft_check_values(int *tab, int ac)
 	int	j;
 
 	i = 0;
-	while (i < ac)
+	while (i < ac - 1)
 	{
 		j = i + 1;
-		while (j < ac)
+		while (j < ac - 1)
 		{
 			if (tab[i] == tab[j])
 				return (1);
@@ -41,13 +41,14 @@ static int	*ft_tab_values(int ac, char **av)
 	i = 1;
 	j = 0;
 	tab_values = ft_calloc(ac, sizeof(int));
+	if (!tab_values)
+		return (0);
 	while (av[i] && i < ac)
 		tab_values[j++] = ft_atol(av[i++]);
 	if (ft_check_values(tab_values, ac) == 1)
 	{
-		printf("!!!!!!!!!!!!!!!!!!!\n");
 		free(tab_values);
-		write(2, "Error\n", 6);
+		write(STDERR_FILENO, "Error\n", 6);
 		exit(1);
 	}
 	return (tab_values);
@@ -61,6 +62,8 @@ static t_list_int	*ft_lst_init(t_toolbox *box)
 	box->list_a = NULL;
 	while (i < box->count)
 		ft_lstadd_back_int(&box->list_a, ft_lstnew_int(box->values[i++]));
+	if (!box->list_a)
+		return (NULL);
 	return (&(*box->list_a));
 }
 

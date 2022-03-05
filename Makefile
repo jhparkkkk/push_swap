@@ -6,7 +6,7 @@ RM 			= 	rm -f
 
 INC			=	-I includes -I libft
 
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror
 
 LFLAGS		=	-I./libft -lft -L./libft
 
@@ -20,7 +20,8 @@ SRCS		=	push_swap.c \
 				push.c \
 				rotate.c \
 				reverse_rotate.c \
-				longest_list.c \
+				longest_list_1.c \
+				longest_list_2.c \
 				departure.c \
 				target.c \
 				simulation.c \
@@ -43,11 +44,11 @@ $(NAME):	$(LIBFT) $(OBJS)
 			$(CC) $(OBJS) $(LFLAGS) $(OUTPUT_OPTION)  
 
 clean:
-			$(RM) $(NAME) $(OBJS)
+			$(RM) $(OBJS)
 			$(RM) ./libft/*.o
 		
 fclean:		clean
-			$(RM) all
+			$(RM) $(NAME) $(LIBFT)
 
 re:			fclean all
 
