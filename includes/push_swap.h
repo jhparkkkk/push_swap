@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:45:49 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/05 22:25:46 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/06 22:29:19 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ typedef struct s_moves
 void		ft_check_error(char **av, int ac);
 t_toolbox	ft_toolbox_init(t_toolbox *box, int ac, char **av);
 
-int			ft_lstlen(t_toolbox *box);
+int			ft_lstlen(t_list_int *lst);
 int			ft_check_sorted_list_a(t_toolbox *box);
 int			ft_find_min(t_toolbox *box);
 int			find_min_pos(t_toolbox *box);
 int			ft_find_max(t_toolbox *box);
+int			find_mediane(t_toolbox *box);
 
 void		ft_swap_a(t_toolbox *box);
 void		ft_swap_b(t_toolbox *box);

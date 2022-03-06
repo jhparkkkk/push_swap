@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:06:11 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/05 22:26:42 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/06 22:15:26 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,19 @@ static int	ft_is_duplicate(char **av, int ac)
 static int	ft_overflow(char **av, int ac)
 {
 	int	i;
+	int	len;
 
 	i = 1;
+	len = 0;
 	while (i < ac)
 	{
-		if (ft_strlen(av[i]) >= 10)
+		len = ft_strlen(av[i]);
+		if (len >= 10)
 		{
 			if (ft_atol(av[i]) < INT_MIN || ft_atol(av[i]) > INT_MAX)
 				return (1);
 		}
-		if (ft_strlen(av[i]) >= 19)
+		if (len == 0 || len >= 19)
 			return (1);
 		i++;
 	}

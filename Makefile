@@ -23,6 +23,7 @@ SRCS		=	push_swap.c \
 				longest_list_1.c \
 				longest_list_2.c \
 				departure.c \
+				departure_utils.c \
 				target.c \
 				simulation.c \
 				moves.c \
