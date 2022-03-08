@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 19:07:08 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/05 22:02:51 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/08 12:04:30 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	*ft_tab_lis_len(t_toolbox *box)
 	return (lis_len);
 }
 
-static void	ft_find_list_len2(t_toolbox **box, int *ix, int *map, int *lis_len)
+static void	ft_find_lis_len2(t_toolbox **box, int *ix, int *map, int *lis_len)
 {
 	int	i;
 	int	j;
@@ -62,7 +62,7 @@ int	*ft_find_lis_len(t_toolbox *box, int *lis_len)
 	{
 		ix[1] = -1;
 		while (++ix[1] < ix[0])
-			ft_find_list_len2(&box, ix, map, lis_len);
+			ft_find_lis_len2(&box, ix, map, lis_len);
 	}
 	return (map);
 }

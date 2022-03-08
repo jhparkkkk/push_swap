@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 19:52:42 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/06 23:33:39 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/08 11:41:46 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 # include <string.h>
 # include <ctype.h>
 # include <setjmp.h>
-
-
 
 typedef struct s_list
 {

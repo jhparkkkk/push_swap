@@ -1,4 +1,5 @@
-NAME		=	push_swap
+NAME 		= 	push_swap
+CHECKER		=	checker
 
 CC			= 	cc
 
@@ -12,7 +13,7 @@ LFLAGS		=	-I./libft -lft -L./libft
 
 LIBFT		=	./libft/libft.a
 
-P_SRCS		=	push_swap.c \
+SRCS		=	push_swap.c \
 				check_error.c \
 				init.c \
 				little_sort.c \
@@ -29,11 +30,23 @@ P_SRCS		=	push_swap.c \
 				moves.c \
 				sync.c \
 				arrival.c \
-				utils.c 
+				utils.c \
 
-P_OBJS		= 	$(P_SRCS:.c=.o)
+SRCS_C		=	checker.c \
+				check_error.c \
+				init.c \
+				longest_list_1.c \
+				longest_list_2.c \
+				push.c \
+				rotate.c \
+				reverse_rotate.c \
+				utils.c \
 
-all:		$(NAME)
+OBJS		= 	$(SRCS:.c=.o)
+OBJS_C		= 	$(SRCS_C:.c=.o)
+
+all:		$(NAME) 
+bonus:		$(CHECKER)
 
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $< $(OUTPUT_OPTION) $(INC)
@@ -41,16 +54,17 @@ all:		$(NAME)
 $(LIBFT):
 			$(MAKE) -C $(@D) $(@F)
 
-$(NAME):	$(LIBFT) $(P_OBJS) 
-			$(CC) $(P_OBJS) $(LFLAGS) $(OUTPUT_OPTION)  
+$(NAME):	$(LIBFT) $(OBJS) 
+			$(CC) $(OBJS) $(LFLAGS) $(OUTPUT_OPTION)  
 
+$(CHECKER):	$(LIBFT) $(OBJS_C)
+			$(CC) $(OBJS_C) $(LFLAGS) $(OUTPUT_OPTION)
 clean:
-			$(RM) $(P_OBJS)
-			$(RM) ./libft/*.o
-		
+			$(RM) $(NAME) $(OBJS) $(OBJS_C) $(LIBFT)
+
 fclean:		clean
-			$(RM) $(NAME) $(LIBFT)
+			$(RM) $(NAME) $(CHECKER)
 
-re:			fclean all
+re:			fclean all bonus
 
-.PHONY:		all clean fclean re 
+.PHONY:		all checker bonus clean fclean re
