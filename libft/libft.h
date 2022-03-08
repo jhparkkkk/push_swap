@@ -6,12 +6,16 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 19:52:42 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/02 14:59:41 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/06 23:33:39 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -19,6 +23,8 @@
 # include <string.h>
 # include <ctype.h>
 # include <setjmp.h>
+
+
 
 typedef struct s_list
 {
@@ -69,6 +75,7 @@ char		*ft_strtrim(char const	*s1, char const	*set);
 char		**ft_split(char const *s, char c);
 char		*ft_itoa(int nb);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char		*get_next_line(int fd);
 
 long long	ft_atol(const char	*str);
 void		ft_lstadd_front(t_list **alst, t_list *new);

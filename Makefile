@@ -1,4 +1,4 @@
-NAME 		= 	push_swap
+NAME		=	push_swap
 
 CC			= 	cc
 
@@ -12,7 +12,7 @@ LFLAGS		=	-I./libft -lft -L./libft
 
 LIBFT		=	./libft/libft.a
 
-SRCS		=	push_swap.c \
+P_SRCS		=	push_swap.c \
 				check_error.c \
 				init.c \
 				little_sort.c \
@@ -29,9 +29,9 @@ SRCS		=	push_swap.c \
 				moves.c \
 				sync.c \
 				arrival.c \
-				utils.c \
+				utils.c 
 
-OBJS		= 	$(SRCS:.c=.o)
+P_OBJS		= 	$(P_SRCS:.c=.o)
 
 all:		$(NAME)
 
@@ -41,11 +41,11 @@ all:		$(NAME)
 $(LIBFT):
 			$(MAKE) -C $(@D) $(@F)
 
-$(NAME):	$(LIBFT) $(OBJS) 
-			$(CC) $(OBJS) $(LFLAGS) $(OUTPUT_OPTION)  
+$(NAME):	$(LIBFT) $(P_OBJS) 
+			$(CC) $(P_OBJS) $(LFLAGS) $(OUTPUT_OPTION)  
 
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(P_OBJS)
 			$(RM) ./libft/*.o
 		
 fclean:		clean
