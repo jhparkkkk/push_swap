@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 23:04:51 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/08 11:52:04 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/08 14:54:53 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	go(char *move, t_toolbox *checker)
 		ft_push_a(checker);
 	else if (ft_strcmp(move, "pb\n") == 0)
 		ft_push_b(checker);
+	else if (ft_strcmp(move, "sa\n") == 0)
+		ft_swap_a(checker);
 	else if (ft_strlen(move) == 3)
 		moves_r(move, checker);
 	else if (ft_strlen(move) == 4)
@@ -75,24 +77,26 @@ int	main(int ac, char **av)
 {
 	t_toolbox	checker;
 	char		*move;
-	int			ret;
-	
+	int			i;
+
+	i = 0;
+	move = NULL;
 	if (ac < 2)
 		return (0);
 	ft_check_error(av, ac);
 	ft_toolbox_init(&checker, ac, av);
-	move = get_next_line(0);
-	if (!move)
-		return (free(checker.values), free(checker.lis), ft_list_free(&checker), 0);
-	go(move, &checker);
-	free(move);
-	while (move != NULL)
+	while (move != NULL || i == 0)
 	{
-		move = get_next_line(0);
 		if (move)
-			go(move, &checker);
-		free(move);
+			free(move);
+		move = get_next_line(0);
+		if (!move)
+			break ;
+		go(move, &checker);
+		i = 1;
 	}
 	display_checker(&checker);
-	return (free(checker.values), free(checker.lis), ft_list_free(&checker), 0);
+	if (ac <= 4 || ac == 6)
+		return (free(checker.values), ft_list_free(&checker), 0);
+	return (free(checker.values), ft_list_free(&checker), free(checker.lis), 0);
 }

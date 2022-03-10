@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:07:02 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/06 22:24:46 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/08 13:34:09 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 	ft_check_error(av, ac);
 	ft_toolbox_init(&box, ac, av);
 	if (ac <= 2)
-		return (free(box.values), ft_list_free(&box), 0);
+		return (0);
 	if (ft_check_sorted_list_a(&box) == 0)
 		return (free(box.values), ft_list_free(&box), 0);
 	if (ac <= 4)

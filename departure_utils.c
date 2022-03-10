@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:42:53 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/06 22:32:45 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/08 23:36:04 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	*ft_tab_sort2(t_toolbox *box, int *copy)
 	int	tmp;
 
 	i = 0;
-	j = 0;
 	tmp = 0;
 	while (i < box->count)
 	{
@@ -43,7 +42,7 @@ static int	*ft_tab_sort(t_toolbox *box)
 {
 	int	*copy;
 
-	copy = ft_calloc(box->count, sizeof(int));
+	copy = box->values;
 	if (!copy)
 		return (0);
 	copy = ft_tab_sort2(box, copy);
@@ -55,7 +54,7 @@ int	find_mediane(t_toolbox *box)
 	int	mediane;
 	int	*sorted_tab;
 
-	mediane = (box->count + 1) / 2;
+	mediane = (box->count) / 2;
 	sorted_tab = ft_tab_sort(box);
 	if (!sorted_tab)
 	{
@@ -65,6 +64,5 @@ int	find_mediane(t_toolbox *box)
 		exit (1);
 	}
 	mediane = sorted_tab[mediane];
-	free(sorted_tab);
 	return (mediane);
 }

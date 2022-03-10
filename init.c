@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:11:09 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/05 22:16:57 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/10 17:50:20 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ static int	*ft_tab_values(int ac, char **av)
 		return (0);
 	while (av[i] && i < ac)
 		tab_values[j++] = ft_atol(av[i++]);
-	if (ft_check_values(tab_values, ac) == 1)
+	if (ft_check_values(tab_values, ac) == 1
+		|| ft_check_sorted(tab_values, ac) == 0)
 	{
+		if (ft_check_values(tab_values, ac) == 1)
+			write(2, "Error\n", 6);
 		free(tab_values);
-		write(STDERR_FILENO, "Error\n", 6);
 		exit(1);
 	}
 	return (tab_values);

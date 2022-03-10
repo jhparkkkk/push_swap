@@ -38,6 +38,7 @@ SRCS_C		=	checker.c \
 				longest_list_1.c \
 				longest_list_2.c \
 				push.c \
+				swap.c \
 				rotate.c \
 				reverse_rotate.c \
 				utils.c \
@@ -61,6 +62,7 @@ $(CHECKER):	$(LIBFT) $(OBJS_C)
 			$(CC) $(OBJS_C) $(LFLAGS) $(OUTPUT_OPTION)
 clean:
 			$(RM) $(NAME) $(OBJS) $(OBJS_C) $(LIBFT)
+			$(RM) ./libft/*.o
 
 fclean:		clean
 			$(RM) $(NAME) $(CHECKER)

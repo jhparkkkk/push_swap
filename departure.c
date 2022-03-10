@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 22:26:40 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/06 22:34:02 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/10 17:49:01 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	passenger_seat(t_toolbox *box, t_list_int *tmp, int mediane)
 			write (1, "rb\n", 3);
 		}
 	}
-	else
+	else if (tmp->content >= mediane)
 		ft_push_b(box);
 }
 

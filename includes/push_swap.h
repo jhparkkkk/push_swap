@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 18:45:49 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/06 22:29:19 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/08 23:37:19 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int			ft_find_min(t_toolbox *box);
 int			find_min_pos(t_toolbox *box);
 int			ft_find_max(t_toolbox *box);
 int			find_mediane(t_toolbox *box);
-
+int			ft_check_sorted(int *tab, int ac);
 void		ft_swap_a(t_toolbox *box);
 void		ft_swap_b(t_toolbox *box);
 void		ft_swap_ss(t_toolbox *box);

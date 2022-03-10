@@ -6,7 +6,7 @@
 /*   By: jeepark <jeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 21:57:18 by jeepark           #+#    #+#             */
-/*   Updated: 2022/03/05 22:16:29 by jeepark          ###   ########.fr       */
+/*   Updated: 2022/03/10 17:48:37 by jeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,24 @@ void	ft_init_lis_pos(int **map, int **pos, int *lis_len, t_toolbox *box)
 	*pos = ft_calloc(box->max, sizeof(int));
 	if (!*pos)
 		return (free(lis_len), free(map));
+}
+
+int	ft_check_sorted(int *tab, int ac)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < ac - 1)
+	{
+		j = i + 1;
+		while (j < ac - 1)
+		{
+			if (tab[i] > tab[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
